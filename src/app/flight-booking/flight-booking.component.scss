@@ -1,0 +1,53 @@
+
+
+th,td  {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border: 1px solid black;
+  }
+
+  .p-datatable {
+    .p-datatable-header {
+        border: 1px  solid black;
+      }
+  }
+  .btn-sort{
+    color: #4b5563;
+    background: #ffffff;
+    padding: 0.75rem 0.75rem;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    border-radius: 6px;
+    width: 250px;
+  }
+.dropdown-item{
+    color: #6b7280;
+    text-align: left;
+}
+.p-button.p-button-icon-only {
+    width: 3rem;
+    padding: 0.75rem 0;
+    border-radius: 0px 6px 6px 0px;
+}
+.dropdown-item {
+    width: 250px;
+}
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 7.255em;
+}
+.btn-clear{
+    color: #4b5563;
+    background: #ffffff;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+.card{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}

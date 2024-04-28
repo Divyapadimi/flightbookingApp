@@ -1,0 +1,102 @@
+<h1 class="text-center text-bold text-primary">Flight Booking App</h1>
+<div class="container-fluid">
+    <div class="card">
+        <div class="m-5">
+            <p-table #dt [value]="products" [tableStyle]="{ 'min-width': '50rem' }" styleClass="p-datatable-gridlines">
+                <ng-template pTemplate="caption">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="p-fluid">
+                                <p-iconField iconPosition="left">
+                                    <p-inputIcon styleClass="pi pi-search" />
+                                    <input type="text" pInputText (keyup)="search($event)" [(ngModel)]="searchText"
+                                        placeholder="Search by origin or destination" />
+                                </p-iconField>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="p-fluid">
+                                <p-dropdown [options]="firstDropdownOptions" [(ngModel)]="selectedFirstOption"
+                                    placeholder="Select by airline or class"
+                                    (onChange)="updateSecondDropdownOptions()"></p-dropdown>
+                            </div>
+                            @if(showSecondDropdown){
+                            <div class="mt-3 p-fluid">
+                                <p-dropdown [options]="secondDropdownOptions" [(ngModel)]="selectedSecondOption"
+                                    placeholder="Select" (onChange)="onChange($event)"></p-dropdown>
+                            </div>
+                            }
+                        </div>
+                        <div class="col-3">
+                            <div class="d-flex justify-content-end">
+                                <div class="p-fluid">
+                                    <div ngbDropdown class="d-inline-block">
+                                        <button type="button" class="btn btn-sort" id="dropdownBasic1"
+                                            ngbDropdownToggle>
+                                            Sort by price
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                            <button class="dropdown-item" (click)="sort('asc')">Lowest Price</button>
+                                            <button class="dropdown-item" (click)="sort('desc')">Highest Price</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-3 text-end">
+                            <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy" showIcon="true" [iconDisplay]="'input'"
+                                placeholder="Select by arrivalTime" inputId="icondisplay"
+                                (onSelect)="onSelect($event)"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button class="btn btn-clear  ml-2" (click)="onClear()">Clear all filters</button>
+                    </div>
+
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Airline</th>
+                        <th>Aircraft</th>
+                        <th>Flight Number</th>
+                        <th>Origin</th>
+                        <th>Desination</th>
+                        <th>Arrival Time</th>
+                        <th>Departure Time</th>
+                        <th>Gate</th>
+                        <th>Price</th>
+                        <th>Seats Available</th>
+                        <th>Class</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{ product.airline }}</td>
+                        <td>{{ product.aircraft }}</td>
+                        <td>{{ product.flightNumber }}</td>
+                        <td>{{ product.origin }}</td>
+                        <td>{{ product.destination }}</td>
+                        <td>{{ product.arrivalTime }}</td>
+                        <td>{{ product.departureTime }}</td>
+                        <td>{{ product.gate }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.seatsAvailable }}</td>
+                        <td>{{ product.class }}</td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage" let-columns>
+                    <tr>
+                        <td [attr.colspan]="12" class="text-left">
+                            {{emptymessage}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
